@@ -9,7 +9,7 @@ export const commandActions: CommandAction = {
   ],
   help: () => [
     "Available commands: about, help, whoami",
-    "chatGPT: start your line with '> ' and write your question",
+    "Sam Altman's child: start your line with '> ' and write your question",
   ],
   whoami: () => [
     "- Eliot Boyer, Mélomane avant tout",

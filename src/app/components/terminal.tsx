@@ -109,9 +109,13 @@ const Terminal = () => {
           <span className="pl-2 pt-2">{elem.cmd}</span>
         </div>
         {Array.isArray(elem.answer) ? (
-          elem.answer.map((line, index) => <p key={index}>{line}</p>)
+          elem.answer.map((line, index) => (
+            <p key={index} className="typing-animation">
+              {line}
+            </p>
+          ))
         ) : (
-          <p>{elem.answer}</p>
+          <p className="typing-animation">{elem.answer}</p>
         )}
       </div>
     ));
@@ -140,8 +144,8 @@ const Terminal = () => {
             <p>
               <span> ~ </span>
               <br />
-              This website allows you to ask something to ChatGPT even if some
-              proxies are trying to block our beloved assistant
+              ChatBP allows you to ask something to Sam Altman&apos;s child even
+              if some proxies are trying to block our beloved assistant
               <br />
               <span> ~ </span>
             </p>
