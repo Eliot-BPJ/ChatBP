@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const clacon = localFont({
+  src: "../../public/clacon2.woff2",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Chat ByPass",
-  description: "Created by SomeOne",
+  title: "Chat BP",
+  description: "Created by Someone",
 };
 
 export default function RootLayout({
@@ -15,12 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={clacon.className}>
+      <body>
         <div
           style={{
             background: "rgb(25, 26, 26)",
-            fontFamily: "CascadiaCode,monospace",
+            color: "#FFFFFF",
           }}
         >
           {children}
