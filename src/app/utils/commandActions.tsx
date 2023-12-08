@@ -9,7 +9,7 @@ export const commandActions: CommandAction = {
   ],
   help: () => [
     "Available commands: about, help, whoami",
-    "Sam Altman's child: start your line with '> ' and write your question",
+    "Sam Altman's child: start your line with '< ' and write your question (dont't forget the space after the angle bracket)",
   ],
   whoami: () => [
     "- Eliot Boyer, Mélomane avant tout",

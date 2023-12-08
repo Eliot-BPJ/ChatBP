@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { commandActions } from "../utils/commandActions";
-import { sendMessage } from "../utils/sendMessage";
+import { sendQuestion } from "../utils/sendMessage";
 import CommandBlock from "./commandBlock";
 
 type CliList = {
@@ -11,6 +11,7 @@ type CliList = {
 
 const Terminal = () => {
   const [cmd, setCmd] = useState<string>("");
+  const [loading, setLoading] = useState(false);
   const [cliList, setCliList] = useState<CliList>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const cmdRef = useRef("");
@@ -38,8 +39,10 @@ const Terminal = () => {
           let defaultMsg = ["Command not found"];
 
           setHistoryIndex(cliList.length + 1);
-          if (trimmedCmd.startsWith("> ")) {
-            defaultMsg[0] = await sendMessage(trimmedCmd.substring(2));
+          if (trimmedCmd.startsWith("< ")) {
+            setLoading(true);
+            defaultMsg = await sendQuestion(trimmedCmd.substring(2));
+            setLoading(false);
           }
           if (action) {
             setCliList((prevCliList) => [
@@ -142,12 +145,12 @@ const Terminal = () => {
             </p>
             <span>Type &apos;help&apos; for available commands</span>
             <p>
-              <span> ~ </span>
+              <span> - </span>
               <br />
               ChatBP allows you to ask something to Sam Altman&apos;s child even
               if some proxies are trying to block our beloved assistant
               <br />
-              <span> ~ </span>
+              <span> - </span>
             </p>
             {showCliCommandList()}
             <div className="flex items-center pt-2 items-baseline">
@@ -167,6 +170,15 @@ const Terminal = () => {
                 autoFocus
               />
             </div>
+            {loading && (
+              <span>
+                <span className="bouncing-points">
+                  <span>.</span>
+                  <span>.</span>
+                  <span>.</span>
+                </span>
+              </span>
+            )}
           </div>
         </div>
       </div>
