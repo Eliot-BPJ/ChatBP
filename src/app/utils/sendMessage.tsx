@@ -47,12 +47,12 @@ const splitResponseIntoChunks = (response: string, charLimit: number) => {
 };
 
 const sendToAPI = async (message: string, chat4: boolean) => {
-  // const url = chat4
-  //   ? "https://chat-bp-api.vercel.app/api/chat4"
-  //   : "https://chat-bp-api.vercel.app/api/chat";
   const url = chat4
-    ? "http://localhost:3001/api/chat4"
-    : "http://localhost:3001/api/chat";
+    ? "https://chat-bp-api.vercel.app/api/chat4"
+    : "https://chat-bp-api.vercel.app/api/chat";
+  // const url = chat4
+  //   ? "http://localhost:3001/api/chat4"
+  //   : "http://localhost:3001/api/chat";
   try {
     const response = await fetch(url, {
       method: "POST",

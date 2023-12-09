@@ -135,19 +135,16 @@ const Terminal = () => {
               CHATBYPASS <span className="text-xs">v 0.1</span>
             </p>
             <p>
-              ChatBP allows you to ask something to Sam Altman&apos;s child even
-              if some proxies are trying to block our beloved assistant
+              Welcome to ChatBP
               <br />
             </p>
             <a
               href="https://github.com/Eliot-BPJ/ChatBP"
               target="_blank"
-              className="social-link text-blue-400 mt-2"
+              className="social-link text-blue-400 mt-2 mb-2"
             >
               <i className="fab fa-github text-xl"></i> ChatBP GitHub page
-              <br></br>
             </a>
-            <span> - </span>
             <span>Type &apos;help&apos; for available commands</span>
             {showCliCommandList()}
             <div className="flex items-center pt-2 items-baseline">
