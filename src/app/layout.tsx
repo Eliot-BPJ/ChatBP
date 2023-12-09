@@ -19,15 +19,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={clacon.className}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+      </head>
       <body>
-        <div
-          style={{
-            background: "rgb(25, 26, 26)",
-            color: "#FFFFFF",
-          }}
-        >
-          {children}
-        </div>
+        <div>{children}</div>
       </body>
     </html>
   );

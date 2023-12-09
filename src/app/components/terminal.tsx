@@ -6,7 +6,7 @@ import CommandBlock from "./commandBlock";
 
 type CliList = {
   cmd: string;
-  answer: string[];
+  answer: JSX.Element;
 }[];
 
 const Terminal = () => {
@@ -36,15 +36,14 @@ const Terminal = () => {
           const trimmedCmd = cmdRef.current.trim();
           if (trimmedCmd.length <= 0) return;
           const action = commandActions[trimmedCmd];
-          let defaultMsg = ["Command not found"];
+          let defaultMsg = <p>Command not found</p>;
 
           setHistoryIndex(cliList.length + 1);
           if (trimmedCmd.startsWith("< ")) {
             setLoading(true);
-            defaultMsg = await sendQuestion(trimmedCmd.substring(2));
+            defaultMsg = await sendQuestion(trimmedCmd.substring(2), false);
             setLoading(false);
-          }
-          if (action) {
+          } else if (action) {
             setCliList((prevCliList) => [
               ...prevCliList,
               { cmd: trimmedCmd, answer: action() },
@@ -111,15 +110,7 @@ const Terminal = () => {
           </span>
           <span className="pl-2 pt-2">{elem.cmd}</span>
         </div>
-        {Array.isArray(elem.answer) ? (
-          elem.answer.map((line, index) => (
-            <p key={index} className="typing-animation">
-              {line}
-            </p>
-          ))
-        ) : (
-          <p className="typing-animation">{elem.answer}</p>
-        )}
+        <div className="deploy-animation">{elem.answer}</div>
       </div>
     ));
   };
@@ -143,15 +134,21 @@ const Terminal = () => {
             <p className="mt-2 mb-2 text-2xl font-bold text-blue-400 ml-10">
               CHATBYPASS <span className="text-xs">v 0.1</span>
             </p>
-            <span>Type &apos;help&apos; for available commands</span>
             <p>
-              <span> - </span>
-              <br />
               ChatBP allows you to ask something to Sam Altman&apos;s child even
               if some proxies are trying to block our beloved assistant
               <br />
-              <span> - </span>
             </p>
+            <a
+              href="https://github.com/Eliot-BPJ/ChatBP"
+              target="_blank"
+              className="social-link text-blue-400 mt-2"
+            >
+              <i className="fab fa-github text-xl"></i> ChatBP GitHub page
+              <br></br>
+            </a>
+            <span> - </span>
+            <span>Type &apos;help&apos; for available commands</span>
             {showCliCommandList()}
             <div className="flex items-center pt-2 items-baseline">
               <span className="text-blue-400 w-fit">
