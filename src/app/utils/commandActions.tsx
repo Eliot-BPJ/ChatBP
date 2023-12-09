@@ -1,6 +1,30 @@
+import { FormEvent, useState } from "react";
+
 type CommandAction = {
   [key: string]: () => JSX.Element;
 };
+
+function SudoCommand() {
+  const [value, setValue] = useState("");
+
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
+  return (
+    <div className="card-input flex-auto justify-center">
+      <form onSubmit={onSubmit}>
+        <input
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder="sudo password"
+          type="password"
+          className="p-1"
+        ></input>
+      </form>
+    </div>
+  );
+}
 
 export const commandActions: CommandAction = {
   about: () => (
@@ -55,4 +79,7 @@ export const commandActions: CommandAction = {
       </a>
     </div>
   ),
+  sudo: () => {
+    return <SudoCommand />;
+  },
 };

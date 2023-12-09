@@ -1,5 +1,3 @@
-import ChatCompletionRequestMessage from "openai";
-
 export const sendQuestion = async (command: string, chat4: boolean) => {
   const response = await sendToAPI(command, chat4);
   const charLimit = calculateCharByLineLimit();
@@ -53,6 +51,7 @@ const sendToAPI = async (message: string, chat4: boolean) => {
   // const url = chat4
   //   ? "http://localhost:3001/api/chat4"
   //   : "http://localhost:3001/api/chat";
+  console.log(url);
   try {
     const response = await fetch(url, {
       method: "POST",

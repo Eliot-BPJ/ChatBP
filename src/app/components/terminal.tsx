@@ -20,12 +20,14 @@ const Terminal = () => {
     cmdRef.current = cmd;
   }, [cmd]);
 
-  useEffect(() => {
+  useEffect(() => { // events listeners
     const input = document.getElementById("commandInput");
 
     if (!input) return;
     document.addEventListener("click", function (event) {
-      if (!input.contains(event.target as Node)) {
+      const clickedElement = event.target as Node;
+      const isInput = clickedElement instanceof HTMLInputElement;
+      if (!isInput) {
         input.focus();
       }
     });
@@ -43,7 +45,8 @@ const Terminal = () => {
             setLoading(true);
             defaultMsg = await sendQuestion(trimmedCmd.substring(2), false);
             setLoading(false);
-          } else if (action) {
+          }
+          if (action) {
             setCliList((prevCliList) => [
               ...prevCliList,
               { cmd: trimmedCmd, answer: action() },
@@ -153,7 +156,6 @@ const Terminal = () => {
                 <span className="text-blue-500">term.chatbp</span>
                 :$&gt;
               </span>
-              <form action="sub"></form>
               <input
                 value={cmd}
                 onChange={(e) => setCmd(e.target.value)}

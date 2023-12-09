@@ -58,7 +58,7 @@ body {
   to { width: 100% }
 }
 
-
+.card-input,
 .card-help,
 .card-chat {
   padding: 1rem;
@@ -74,6 +74,11 @@ body {
   overflow: hidden;
 }
 
+.card-input {
+  justify-self: center;
+  color: var(--background-rgb);
+  border-left: 4px solid var(--secondary-color); /* Your existing border color */
+}
 .card-help {
   border-left: 4px solid var(--secondary-color); /* Your existing border color */
 }
