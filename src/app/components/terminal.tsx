@@ -151,10 +151,9 @@ const Terminal = () => {
             <span>Type &apos;help&apos; for available commands</span>
             {showCliCommandList()}
             <div className="flex items-center pt-2 items-baseline">
-              <span className="text-blue-400 w-fit">
+              <span style={{ whiteSpace: "nowrap" }} className="text-blue-400 w-fit">
                 <span className="text-red-400">guest</span>@
-                <span className="text-blue-500">term.chatbp</span>
-                :$&gt;
+                <span className="text-blue-500">term.chatbp</span>:$&gt;
               </span>
               <input
                 value={cmd}
