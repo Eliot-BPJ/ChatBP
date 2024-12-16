@@ -15,6 +15,7 @@ const Terminal = () => {
   const [cliList, setCliList] = useState<CliList>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const cmdRef = useRef("");
+  const [windowSize, setWindowSize] = useState({x : 0, y : 0});
 
   useEffect(() => {
     cmdRef.current = cmd;
@@ -22,7 +23,7 @@ const Terminal = () => {
 
   useEffect(() => { // events listeners
     const input = document.getElementById("commandInput");
-
+    setWindowSize({x : window.innerWidth, y : window.innerHeight})
     if (!input) return;
     document.addEventListener("click", function (event) {
       const clickedElement = event.target as Node;
@@ -111,7 +112,11 @@ const Terminal = () => {
             <span className="text-red-400">guest</span>@
             <span className="text-blue-500">term.chatbp</span>:$&gt;
           </span>
-          <span className="pl-2 pt-2">{elem.cmd}</span>
+          <div className="pt-2">
+          <div className="bg-gray-800 rounded ml-2" style={{ width: (elem.cmd.length <= 0 ? 2 : elem.cmd.length+2) + "ch" }}>
+            <span className="pl-2">{elem.cmd}</span>
+          </div>
+          </div>
         </div>
         <div className="deploy-animation">{elem.answer}</div>
       </div>
@@ -132,7 +137,9 @@ const Terminal = () => {
                 <span className="text-red-400">guest</span>@
                 <span className="text-blue-500">term.chatbp</span>:$&gt;
               </span>
-              <span className="pl-2">banner</span>
+              <div className="bg-gray-800 rounded ml-2" style={{ width: "15" }}>
+                <span className="px-2">banner</span>
+              </div>
             </div>
             <p className="mt-2 mb-2 text-2xl font-bold text-blue-400 ml-10">
               CHATBYPASS <span className="text-xs">v 0.1</span>
@@ -144,7 +151,7 @@ const Terminal = () => {
             <a
               href="https://github.com/Eliot-BPJ/ChatBP"
               target="_blank"
-              className="social-link text-blue-400 mt-2 mb-2"
+              className="social-link text-blue-400 mt-2 mb-2 w-fit"
             >
               <i className="fab fa-github text-xl"></i> ChatBP GitHub page
             </a>
@@ -155,15 +162,17 @@ const Terminal = () => {
                 <span className="text-red-400">guest</span>@
                 <span className="text-blue-500">term.chatbp</span>:$&gt;
               </span>
-              <input
-                value={cmd}
-                onChange={(e) => setCmd(e.target.value)}
-                type="text"
-                className="bg-transparent border-none focus:outline-none w-full pl-2"
-                id="commandInput"
-                autoComplete="off"
-                autoFocus
-              />
+              <div className="bg-gray-800 rounded ml-2" style={{ width: (cmd.length <= 0 ? 2 : cmd.length+2) + "ch" }}>
+                <input
+                  value={cmd}
+                  onChange={(e) => setCmd(e.target.value)}
+                  type="text"
+                  className="bg-transparent focus:outline-none w-full ml-2"
+                  id="commandInput"
+                  autoComplete="off"
+                  autoFocus
+                />
+              </div>
             </div>
             {loading && (
               <span>

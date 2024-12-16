@@ -24,5 +24,35 @@
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
-  }
+  },
+  "extensionPack": [ 
+    "aaron-bond.better-comments", 
+    "akamud.vscode-theme-onedark", 
+    "bradgashler.htmltagwrap", 
+    "christian-kohler.npm-intellisense", 
+    "christian-kohler.path-intellisense", 
+    "davidanson.vscode-markdownlint", 
+    "dbaeumer.vscode-eslint", 
+    "eamodio.gitlens", 
+    "esbenp.prettier-vscode", 
+    "formulahendry.auto-close-tag", 
+    "formulahendry.auto-rename-tag", 
+    "gruntfuggly.todo-tree", 
+    "imgildev.vscode-nextjs-generator", 
+    "mhutchie.git-graph", 
+    "mikestead.dotenv", 
+    "ms-azuretools.vscode-docker", 
+    "ms-vscode.vscode-typescript-next", 
+    "naumovs.color-highlight", 
+    "oderwat.indent-rainbow", 
+    "pkief.material-icon-theme", 
+    "prisma.prisma", 
+    "rangav.vscode-thunder-client", 
+    "ritwickdey.liveserver", 
+    "usernamehw.errorlens", 
+    "vincaslt.highlight-matching-tag", 
+    "wix.vscode-import-cost", 
+    "yoavbls.pretty-ts-errors", 
+    "yzhang.markdown-all-in-one"
+  ]
 }
